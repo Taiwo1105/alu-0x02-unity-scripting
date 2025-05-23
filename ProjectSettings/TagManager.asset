@@ -7,6 +7,7 @@ TagManager:
   - CinemachineTarget
   - Pickup
   - Trap
+  - Goal
   layers:
   - Default
   - TransparentFX
