@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement; // Only needed if you plan to reload the scene
 
 // Controls player movement on the XZ plane using physics and tracks score/health.
 public class PlayerController : MonoBehaviour
@@ -29,13 +30,18 @@ public class PlayerController : MonoBehaviour
         {
             score++;
             Debug.Log("Score: " + score);
-            other.gameObject.SetActive(false); // Or use Destroy(other.gameObject);
+            other.gameObject.SetActive(false);
         }
 
         if (other.CompareTag("Trap"))
         {
             health--;
             Debug.Log("Health: " + health);
+        }
+
+        if (other.CompareTag("Goal"))
+        {
+            Debug.Log("You win!");
         }
     }
 }
