@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     public float speed = 5.0f; // Editable movement speed
 
     private Rigidbody rb;
+    private int score = 0; // Initialize score to 0
 
     // Called once at the beginning
     private void Start()
@@ -26,5 +27,16 @@ public class PlayerController : MonoBehaviour
 
         // Apply the movement while maintaining physics stability
         rb.MovePosition(rb.position + movement * Time.fixedDeltaTime);
+    }
+
+    // Trigger event handler for pickups
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Pickup"))
+        {
+            score++;
+            Debug.Log("Score: " + score);
+            other.gameObject.SetActive(false); // Disable the coin
+        }
     }
 }
